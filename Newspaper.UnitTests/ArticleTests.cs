@@ -16,7 +16,10 @@ namespace Newspaper.UnitTests
                 Name = "Lois Lane",
                 Specialty = "Politics"
             };
-            Issue issue = new Issue();
+            Issue issue = new Issue()
+            {
+                Date = DateTime.UtcNow
+            };
             Article article = new Article()
             {
                 Title = "The Superman is Real, and He's American!",
@@ -24,12 +27,11 @@ namespace Newspaper.UnitTests
                 Reporter = reporter,
                 Issue = issue
             };
-            
 
             Assert.Equal("The Superman is Real, and He's American!", article.Title);
             Assert.Equal("a bunch of words", article.Content);
             Assert.Equal(reporter, article.Reporter);
-            Assert.Equal(new Issue(), issue);
+            Assert.Equal(issue, article.Issue);
         }
     }
 }
