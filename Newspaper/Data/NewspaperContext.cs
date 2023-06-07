@@ -23,5 +23,12 @@ namespace Newspaper.Data
                 "Database=Newspaper")
                 .UseSnakeCaseNamingConvention();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Issue>().Navigation(e => e.Articles).AutoInclude();
+            modelBuilder.Entity<Article>().Navigation(e => e.Reporter).AutoInclude();
+            modelBuilder.Entity<Reporter>().Navigation(e => e.Articles).AutoInclude();
+        }
     }
 }

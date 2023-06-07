@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Newspaper.Data;
+
+using (var context = new NewspaperContext())
+{
+    DataSeeder.SeedData(context);
+}
